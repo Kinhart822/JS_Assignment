@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditProfile</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #afafaf;
+        }
+        .flex-container1,
+        .flex-container2 {
+            display: flex;
+        }
+
+        .flex-container2 {
+            justify-content: flex-end;
+        }
+        select {
+            font-family: 'FontAwesome';
+            border: none;
+            padding: 15px 0px 15px 10px;
+            background: #afafaf;
+        }
+        .is-invalid {
+            border: 1px solid red;
+        }
+        .invalid-feedback {
+            display: none;
+            font-size: 0.8em;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="flex-container1">
+        <div style="font-size: xx-large; color: #343434">CMS</div>
+    </div>
+    <div class="flex-container2">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+        <i class="fa-solid fa-user" style="color: #2a85ee;display:flex;align-items: center"></i>
+        <select style="background:transparent; border:0px; width: 30px;" onchange="location = this.value;">
+            <option></option>
+            <option value="EditProfile.html">&#xf007 User Profile</option>
+            <option value="login.html">&#xf2f5 Log out</option>
+        </select>
+    </div>
+</div>
+<div class="section">
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <div class="search">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="view-link">
+                <i class="fa-solid fa-table-cells"></i>
+                <a href="ViewContents.html" style="color: #2a85ee">View contents</a>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="form-link">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <a href="FormContents.html" style="color: #2a85ee">Form contents</a>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="link">
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <div>
+            <h1>Edit Profile</h1>
+        </div>
+        <hr>
+        <div class="form-container1">
+            <div class="form-container1-item">
+                <h3>Profile Form Elements</h3>
+            </div>
+            <div class="form-container1-item">
+                <form id="profileForm">
+                    <div class="form-group1">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" placeholder="Enter the first name" required>
+                        <div id="first-name-check" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group1">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" placeholder="Enter the last name" required>
+                        <div id="last-name-check" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group1">
+                        <div class="email">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                            <div id="email-check" class="invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group1">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                        <div id="phone-check" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group1">
+                        <label for="description">Description</label>
+                        <textarea id="description" placeholder="Enter a description"></textarea>
+                        <div id="description-check" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group-buttons">
+                        <button type="submit" onclick="saveProfile()">Submit Button</button>
+                        <button type="reset">Reset Button</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="JavaScript/EditProfile.js"></script>
+<script>
+    function saveProfile() {
+        let firstName, lastName, email, phone, description;
+        firstName = document.getElementById("first-name").value;
+        lastName = document.getElementById("last-name").value;
+        email = document.getElementById("email").value;
+        phone = document.getElementById("phone").value;
+        description = document.getElementById("description").value;
+
+        let userProfile = {
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "phone": phone,
+            "description": description
+        };
+
+        let userRecords = JSON.parse(localStorage.getItem("userProfiles")) || [];
+
+        let existingUser = userRecords.find(user => user.email === email);
+
+        if (existingUser) {
+            alert("Duplicate Data: User with this email already exists.");
+        } else {
+            userRecords.push(userProfile);
+            localStorage.setItem("userProfiles", JSON.stringify(userRecords));
+            alert("Profile successfully updated");
+        }
+    }
+</script>
+
+</body>
+</html>

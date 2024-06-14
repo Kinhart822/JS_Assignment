@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewContents</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #afafaf;
+        }
+        .flex-container1,
+        .flex-container2 {
+            display: flex;
+        }
+
+        .flex-container2 {
+            justify-content: flex-end;
+        }
+        select {
+            font-family: 'FontAwesome';
+            border: none;
+            padding: 15px 0px 15px 10px;
+            background: #afafaf;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="flex-container1">
+        <div style="font-size: xx-large; color: #343434">CMS</div>
+    </div>
+    <div class="flex-container2">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+        <i class="fa-solid fa-user" style="color: #2a85ee;display:flex;align-items: center"></i>
+        <select style="background:transparent; border:0px; width: 30px;" onchange="location = this.value;">
+            <option></option>
+            <option value="EditProfile.html">&#xf007 User Profile</option>
+            <option value="login.html">&#xf2f5 Log out</option>
+        </select>
+    </div>
+</div>
+<div class="section">
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <div class="search">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="view-link">
+                <i class="fa-solid fa-table-cells"></i>
+                <a href="ViewContents.html" style="color: #2a85ee">View contents</a>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="form-link">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <a href="FormContents.html" style="color: #2a85ee">Form contents</a>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="link">
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <div>
+            <h1>View Content</h1>
+        </div>
+        <hr>
+        <div class="form-container1">
+            <div class="form-container1-item">
+                <h3>View Content List</h3>
+            </div>
+            <div class="form-container1-item">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Brief</th>
+                        <th>Created Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                        <td>31/08/2016 12:03</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Vestibulum tincidunt est vitae</td>
+                        <td>Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</td>
+                        <td>31/08/2016 13:13</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Aliquam ornare lacus adipiscing</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan.</td>
+                        <td>01/09/2016 15:09</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="JavaScript/ViewContents.js"></script></body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="Main">
+    <form>
+        <div class="form-header">
+            <p style="font-size: larger; margin-top: 0px; margin-bottom: 0px"><strong>Register</strong></p>
+        </div>
+        <div class="container">
+            <div class="form-register">
+                <div class="input-group">
+                    <input type="text" id="usernames" name="username" placeholder="User name" required>
+                    <div id="usercheck" class="invalid-feedback"></div>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                    <div id="emailvalid" class="invalid-feedback"></div>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <div id="passcheck" class="invalid-feedback"></div>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="conpassword" name="repassword" placeholder="Re Password" required>
+                    <div id="conpasscheck" class="invalid-feedback"></div>
+                </div>
+                <div class="button-group" style="margin-top: 20px">
+                    <button type="submit">Register</button>
+                </div>
+            </div>
+            <div class="login-link">
+                <a href="login.html">Click here to Login</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="JavaScript/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormContents</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #afafaf;
+        }
+        .flex-container1,
+        .flex-container2 {
+            display: flex;
+        }
+
+        .flex-container2 {
+            justify-content: flex-end;
+        }
+        select {
+            font-family: 'FontAwesome';
+            border: none;
+            padding: 15px 0px 15px 10px;
+            background: #afafaf;
+        }
+        .is-invalid {
+            border-color: red !important;
+        }
+        .invalid-feedback {
+            display: none;
+            font-size: 0.8em;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="flex-container1">
+        <div style="font-size: xx-large; color: #343434">CMS</div>
+    </div>
+    <div class="flex-container2">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+        <i class="fa-solid fa-user" style="color: #2a85ee;display:flex;align-items: center"></i>
+        <select style="background:transparent; border:0px; width: 30px;" onchange="location = this.value;">
+            <option></option>
+            <option value="EditProfile.html">&#xf007 User Profile</option>
+            <option value="login.html">&#xf2f5 Log out</option>
+        </select>
+    </div>
+</div>
+<div class="section">
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <div class="search">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="view-link">
+                <i class="fa-solid fa-table-cells"></i>
+                <a href="ViewContents.html" style="color: #2a85ee">View contents</a>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="form-link">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <a href="FormContents.html" style="color: #2a85ee">Form contents</a>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="link">
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <div>
+            <h1>Add Content</h1>
+        </div>
+        <hr>
+        <div class="form-container1">
+            <div class="form-container1-item">
+                <h3>Content Form Elements</h3>
+            </div>
+            <div class="form-container1-item">
+                <form id="contentForm">
+                    <div class="form-group1">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" placeholder="Enter the title">
+                        <div id="title-check" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group1">
+                        <label for="brief">Brief</label>
+                        <textarea id="brief" placeholder="Enter a brief"></textarea>
+                        <div id="brief-check" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group1">
+                        <label for="content">Content</label>
+                        <textarea id="content" placeholder="Enter the content"></textarea>
+                        <div id="content-check" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group-buttons">
+                        <button type="submit" onclick="saveData()" id="save_btn">Submit Button</button>
+                        <button type="reset">Reset Button</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="JavaScript/FromContents.js"></script>
+<script>
+    function saveData() {
+        let title, brief, content;
+        title = document.getElementById("title").value;
+        brief = document.getElementById("brief").value;
+        content = document.getElementById("content").value;
+
+        // localStorage.setItem("title", title);
+        // localStorage.setItem("brief", brief);
+        // localStorage.setItem("content", content);
+
+        let user_records=new Array();
+        user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+        if(user_records.some((v)=>{
+            return v.title == title;
+            return v.brief == brief;
+            return v.content == content;
+        })){
+            alert("Duplicate Data");
+        } else {
+            user_records.push({
+                "title":title,
+                "brief":brief,
+                "content":content
+            })
+            localStorage.setItem("users", JSON.stringify(user_records));
+            alert("Form successfully submitted");
+        }
+    }
+</script>
+</body>
+</html>
